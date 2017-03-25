@@ -13,27 +13,19 @@
 				<div class="jumbotron">
 					<h1>Select Device Manager</h1>
 					<div class="row">
-					    <div class="col-md-2 col-md-offset-5">
-					    	<div class="container">
-					    	<div class="row">
-								<div class="col-xs-12">
-									<div class="dropdown">
-										<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										Region:  <span class="selected"></span>
-										<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-											<li><a href="#">NAFTA</a></li>
-											<li><a href="#">LATAM</a></li>
-											<li><a href="#">EMEA</a></li>
-											<li><a href="#">APAC</a></li>
-											<li><a href="#">AM</a></li>
-										</ul>
-									</div>
-					    		</div>
-					    	</div>
-					    	</div>
-					    </div>
+					    <div class="col-xs-12">
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Region:  <span class="selected"></span>
+								<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<c:forEach items="${deviceManagerList}" var="deviceManager">
+								        <li><a href="#">${deviceManager.dmName}</a></li>
+								    </c:forEach>
+								</ul>
+							</div>
+			    		</div>
 					</div>
 					
 				</div>

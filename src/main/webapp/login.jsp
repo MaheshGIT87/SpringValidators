@@ -7,34 +7,16 @@
 		<%@ include file="common/css.jsp" %>
 		<link href="assets/css/signin.css" rel="stylesheet" type="text/css">
 		<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript">
-			function submitForm() {
-			    f = document.form1;
-			    if (f.login.value == "") {
-			        alert("Login ID should not be empty.");
-			        f.login.focus();
-			        return false;
-			    } else if (f.password.value == "") {
-			        alert("Password should not be empty.");
-			        f.password.focus();
-			        return false;
-			    } else {
-			       // f.action = "AuthenticationServlet";
-			       f.action = "${pageContext.request.contextPath}/authenticate"
-			       f.submit();
-			    }
-			}
-		</script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="login-form">
 				 <c:if test="${not empty error}">
 				  	<div class="alert alert-danger">
-					   <strong>Error!</strong>${error}
+					   <strong>Error! </strong>${error}
 					</div>
 				 </c:if>
-				<form:form name="submitForm" method="POST">
+				<form method="post" action="login">
 					<h1>Image Here</h1>
 					<div class="form-group ">
 						<div class="inner-addon left-addon">
@@ -49,8 +31,8 @@
 						</div>
 					</div>
 					<span></span>
-					<input name="b1" class="log-btn" type="submit" value="Login" onClick="javascript:window.location='selectSchema.jsp'" />
-				</form:form>
+					<input name="b1" class="log-btn" type="submit" value="Login"/>
+				</form>
 			</div>
 		</div>
 	</body>

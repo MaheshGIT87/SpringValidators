@@ -3,6 +3,8 @@
  */
 package com.primasolv.devicedata.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.primasolv.devicedata.model.DeviceManager;
 import com.primasolv.devicedata.model.User;
+import com.primasolv.devicedata.service.DeviceManagerService;
 import com.primasolv.devicedata.service.LoginService;
 import com.primasolv.devicedata.web.bean.LoginBean;
 
@@ -29,20 +33,17 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String init(Model model) {
-        model.addAttribute("msg", "Please Enter Your Login Details");
-        return "login";
-    }
+	@Autowired
+	DeviceManagerService deviceManagerService;
 	
-	@RequestMapping(method = RequestMethod.POST)
-    public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean) {
-		System.out.println("###:"+loginBean.getUserName()+"--"+loginBean.getPassword());
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean, HttpSession session) {
         if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) {
         	User userData = loginService.checkLogin(loginBean.getUserName(), loginBean.getPassword());
         	if(userData != null) {
-//        		session.setAttribute("loggedInUser", userData);
-//        		session.setAttribute("username", "KiranNunna");
+        		session.setAttribute("loggedInUser", userData);
+        		List<DeviceManager> deviceManagerList = deviceManagerService.getDeviceManagerList();
+        		session.setAttribute("deviceManagerList", deviceManagerList);
         		return "selectDeviceManager";
         	} else {
         		model.addAttribute("error", "Invalid Details");

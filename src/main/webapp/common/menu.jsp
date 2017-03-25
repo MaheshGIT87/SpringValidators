@@ -28,7 +28,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown current-user">
 					<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle capitalize" data-close-others="true" href="#">
-					Kiran&nbsp;Nunna<span class="caret"></span>
+					<c:out value="${sessionScope.loggedInUser.firstName}"/>&nbsp;<c:out value="${sessionScope.loggedInUser.lastName}"/><span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="./logout.jsp">Profile</a></li>
