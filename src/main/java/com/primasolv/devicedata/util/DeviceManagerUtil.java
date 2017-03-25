@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.apache.commons.beanutils.DynaBean;
+import org.apache.commons.beanutils.converters.SqlTimestampConverter;
 
 /**
  * @author kiran
@@ -50,12 +51,34 @@ public class DeviceManagerUtil {
         }
         return result;
     }
+    
+    public static boolean convertBeanValueToBoolean(DynaBean beanToParse, String value) {
+        boolean result = false;
+        if (beanToParse.get(value) != null) {
+            result = Boolean.parseBoolean(convertBeanValueToString(beanToParse, value));
+        }
+        return result;
+    }    
 
     public static java.util.Date convertBeanValueToDate(DynaBean beanToParse, String value) {
         java.util.Date result = null;
         if (beanToParse.get(value) != null) {
             try {
                 result = sdf.parse(beanToParse.get(value).toString());
+            } catch (ParseException pe) {
+            }
+        }
+        return result;
+    }
+    
+    public java.util.Date convertBeanValueToTimeStamp(DynaBean beanToParse, String value) {
+        java.util.Date result = null;
+        if (beanToParse.get(value) != null) {
+            Object o = beanToParse.get(value);
+            SqlTimestampConverter sqlTsConverter = new SqlTimestampConverter(o);
+            String s = sqlTsConverter.toString();
+            try {
+                result = sdfTimeStamp.parse(beanToParse.get(value).toString());
             } catch (ParseException pe) {
             }
         }

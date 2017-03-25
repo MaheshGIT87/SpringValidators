@@ -3,11 +3,15 @@
  */
 package com.primasolv.devicedata.model;
 
+import java.io.Serializable;
+
 /**
  * @author kiran
  *
  */
-public class DeviceManager {
+public class DeviceManager implements Serializable {
+	
+	private static final long serialVersionUID = -5601620497654974451L;
 	
 	private String dmId;
 	private String region;

@@ -8,7 +8,7 @@
 			<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">
-				Device Data
+				Device Manager
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -21,7 +21,7 @@
 					Search By<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Assets</a></li>
+						<li><a href="assets.jsp">Assets</a></li>
 						<li><a href="#">Dealer</a></li>
 						<li><a href="#">Field User</a></li>
 					</ul>
