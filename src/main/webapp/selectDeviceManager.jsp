@@ -12,22 +12,11 @@
 			<div class="container theme-showcase" role="main">
 				<div class="jumbotron">
 					<h1>Select Device Manager</h1>
-					<div class="row">
-					    <div class="col-xs-12">
-							<div class="dropdown">
-								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Region:  <span class="selected"></span>
-								<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<c:forEach items="${deviceManagerList}" var="deviceManager">
-								        <li><a href="#">${deviceManager.dmName}</a></li>
-								    </c:forEach>
-								</ul>
-							</div>
-			    		</div>
-					</div>
-					
+					<select id="dyna_selDeviceManager">
+						<c:forEach items="${deviceManagerList}" var="deviceManager">
+					        <option value="dm_${deviceManager.region}${deviceManager.dmEnvType}">${deviceManager.dmName}</option>
+					    </c:forEach>
+					</select>
 				</div>
 			</div>
 		</div>

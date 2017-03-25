@@ -13,7 +13,9 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="./selectDeviceManager.jsp">Home</a></li>
+				<li>
+					<a href="./selectDeviceManager.jsp">Home (Region: <strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)</a>
+				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					Search By<span class="caret"></span>

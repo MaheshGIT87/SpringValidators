@@ -10,8 +10,9 @@
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<spring.version>4.2.2.RELEASE</spring.version>
+		<spring.version>4.3.1.RELEASE</spring.version>
 		<servletapi.version>3.1.0</servletapi.version>
+		<jackson.version>2.7.5</jackson.version>
 		<jstl.version>1.2</jstl.version>
 	</properties>
 
@@ -52,6 +53,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.26</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		
 		<dependency>
