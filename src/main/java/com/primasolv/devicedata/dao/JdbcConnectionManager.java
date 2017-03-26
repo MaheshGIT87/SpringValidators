@@ -13,12 +13,21 @@ import org.apache.commons.beanutils.RowSetDynaClass;
 import com.primasolv.devicedata.util.DeviceManagerUtil;
 import com.primasolv.devicedata.util.PropertiesReader;
 
-
+/**
+ * 
+ * @author kiran
+ *
+ */
 @SuppressWarnings("rawtypes")
 public class JdbcConnectionManager {
 
     private Connection conn = null;
 
+    /**
+     * Set connection
+     * @param schema
+     * @return
+     */
     public Connection setConnection(String schema) {
         PropertiesReader pr = new PropertiesReader();
         
@@ -27,7 +36,6 @@ public class JdbcConnectionManager {
         }
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            System.out.println(pr.getPropertyValue("database.schema"));
             this.conn = DriverManager.getConnection(
                     pr.getPropertyValue("database.url")+schema,
                     pr.getPropertyValue("database.user"),
@@ -64,6 +72,12 @@ public class JdbcConnectionManager {
         return autoIncKey;
     }
 
+    /**
+     * 
+     * @param sql
+     * @return
+     * @throws Exception
+     */
     public Collection execute(String sql) throws Exception {
         ResultSet resultSet = null;
         Collection result = null;
@@ -77,6 +91,12 @@ public class JdbcConnectionManager {
         return result;
     }
     
+    /**
+     * Execute the SQL query
+     * @param sql
+     * @return
+     * @throws Exception
+     */
 	public Collection executeQuery(String sql) throws Exception {
         ResultSet resultSet = null;
         Collection result = null;
@@ -90,7 +110,13 @@ public class JdbcConnectionManager {
         return result;
     }
 
-
+	/**
+	 * Execute SQL query with values
+	 * @param sql
+	 * @param values
+	 * @return
+	 * @throws Exception
+	 */
     public Collection execute(String sql, Object[] values) throws Exception {
         PreparedStatement ps = null;
         Collection result = null;
@@ -107,6 +133,9 @@ public class JdbcConnectionManager {
         return result;
     }
 
+    /**
+     * Commit the transaction
+     */
     public void commit() {
         try {
             conn.commit();
@@ -114,6 +143,9 @@ public class JdbcConnectionManager {
         }
     }
 
+    /**
+     * Close the connection
+     */
     public void closeConnection() {
         if (conn != null) {
             try {
@@ -124,7 +156,12 @@ public class JdbcConnectionManager {
     }
 
 
-
+    /**
+     * Execute SQL query
+     * @param sql
+     * @return
+     * @throws Exception
+     */
     public boolean executeSql(String sql) throws Exception {
         boolean isSuccess = false;
         Statement st = null;

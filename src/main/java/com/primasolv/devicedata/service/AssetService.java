@@ -7,8 +7,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.primasolv.devicedata.model.Asset;
-
 /**
  * @author kiran
  *

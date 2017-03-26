@@ -3,7 +3,6 @@
  */
 package com.primasolv.devicedata.web.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.primasolv.devicedata.model.Asset;
 import com.primasolv.devicedata.service.AssetService;
 
 /**

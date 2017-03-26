@@ -23,8 +23,8 @@ function isValueEmpty(value) {
  *            value
  * @returns {Boolean} true: if NOT empty false: if empty
  */
-function isValueNotEmpty(id) {
-	return !isValueEmpty(id);
+function isValueNotEmpty(value) {
+	return !isValueEmpty(value);
 }
 
 /**
@@ -99,6 +99,18 @@ function hasValueSelected(id){
  */
 function getSelectedValue(id){
 	return hasValueSelected(id) ? $(id).val() : EMPTY_STRING;
+}
+
+/**
+ * Set the given value to provided SpanId
+ * @param spanId
+ * @param value
+ */
+function setValue(spanId, value) {
+	if(isValueEmpty(value)) {
+		value = "-";
+	}
+	$(spanId).html(value);
 }
 
 /**

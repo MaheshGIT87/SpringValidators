@@ -5,6 +5,13 @@ body {
     font-family: "Raleway",sans-serif;
 }
 
+dt {
+    font-weight: 100;
+}
+dd {
+	font-weight: 700;
+}
+
 /** Custom Search Styles Start**/
 #custom-search-input{
     padding: 3px;
@@ -38,6 +45,41 @@ body {
     font-size: 23px;
 }
 /** Custom Search Styles End**/
+
+/* Datatables custom CSS Start */
+table {
+    table-layout: fixed;
+	word-break:break-all;
+    overflow: hidden;  
+}
+
+.table thead tr {
+	border-bottom-width: 0px;
+	color: #ffffff;
+	font-family: sans-serif;
+	font-size: 13px;
+	background-color: #6F7E95;
+}
+	
+.table td,th {
+	text-align: center;
+	word-break: break-word;
+}
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
+table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, 
+table.dataTable thead .sorting_desc_disabled:after {
+	opacity: 1.0;
+}
+/* Datatables custom CSS End */
+
+.loading {    
+    background-color: #ffffff;
+    background-image: url("http://loadinggif.com/images/image-selection/3.gif");
+    background-size: 25px 25px;
+    background-position:right center;
+    background-repeat: no-repeat;
+}
 
 footer {
   position: fixed;

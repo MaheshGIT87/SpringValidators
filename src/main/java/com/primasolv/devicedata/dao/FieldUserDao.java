@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.primasolv.devicedata.model.FieldUser;
-import com.primasolv.devicedata.model.UserAsset;
 
 /**
  * @author kiran

@@ -14,7 +14,7 @@
 		    		<h4>Asset Search</h4>
 		            <div id="custom-search-input">
 		                <div class="input-group col-md-12">
-		                    <input type="text" class="form-control input-lg" placeholder="External Id" />
+		                    <input type="text" id="externalId" class="form-control input-lg" placeholder="External Id" />
 		                    <span class="input-group-btn">
 		                        <button class="btn btn-info btn-lg" type="button" onClick="performAssetSearch()">
 		                            <i class="glyphicon glyphicon-search"></i>
@@ -31,60 +31,60 @@
 				</div>
 				<div class="collapse" id="collapseOrderItems1">
 					<div class="panel-body">
-						<form method="post" name="form1">
-							<input type="hidden" name="type" value="add"/>
-							<div class="row col-md-6 col-md-offset-3">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Login ID</label>
-										<input type="text" name="login" class="form-control">
-									</div>
-									<div class="form-group">
-										<label>First Name</label>
-										<input type="text" name="first_name" class="form-control" id="" value="">
-									</div>
-									<div class="form-group">
-										<label>Email Address</label>
-										<input type="text" name="email" class="form-control" id="" value="">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Password</label>
-										<input type="password" name="password" class="form-control">
-									</div>
-									<div class="form-group">
-										<label>Last Name</label>
-										<input type="text" name="last_name" class="form-control" id="" value="">
-									</div>
-									<div class="form-group">
-										<label>User Type</label><br/>
-										<select class="form-control" name="user_type">
-											<option value="NORMAL USER">NORMAL USER</option>
-											<option value="ADMINISTRATOR">ADMINISTRATOR</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-9 col-md-offset-5">
-									<div class="form-group">
-										<input type="button" class="btn btn-primary" name="b1" value="Create User" onclick="submitForm()"/>
-									</div>
-								</div>
+						<div class="row">
+							<div class="col-md-3">
+								<dl>
+									<dt>ID</dt>
+									<dd><span id="dyna_assetId">-</span></dd>
+								</dl>
+								<dl>
+									<dt>Serial Number</dt>
+									<dd><span id="dyna_serialNumber">-</span></dd>
+								</dl>
 							</div>
-						</form>
+							<div class="col-md-3">
+								<dl>
+									<dt>Dealer Id</dt>
+									<dd><span id="dyna_dealerId">-</span></dd>
+								</dl>
+								<dl>
+									<dt>Source</dt>
+									<dd><span id="dyna_source">-</span></dd>
+								</dl>
+							</div>
+							<div class="col-md-3">
+								<dl>
+									<dt>Device Mgr URL</dt>
+									<dd><span id="dyna_deviceMgrUrl">-</span></dd>
+								</dl>
+								<dl>
+									<dt>Type</dt>
+									<dd><span id="dyna_assetType">-</span></dd>
+								</dl>
+							</div>
+							<div class="col-md-3">
+								<dl>
+									<dt>Pod Flash Log Level</dt>
+									<dd><span id="dyna_podFlashLogLevel">-</span></dd>
+								</dl>
+								<dl>
+									<dt>Pod Log Level</dt>
+									<dd><span id="dyna_podLogLevel">-</span></dd>
+								</dl>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			
-			<table class="table table-striped table-bordered table-hover table-condensed" id="tblUsers">
+			<table class="table table-striped table-bordered table-hover table-condensed" id="tblFieldUsers">
 				<thead>
 					<tr>
 						<th>External Id</th>
 						<th>First Name</th>
 						<th>Last Name</th>
-						<th>Email</th>
-						<th>User Type</th>
-						<th data-orderable="false">Actions</th>
+						<th>Source</th>
+						<th>Owner</th>
 					</tr>
 				</thead>
 				<tbody>
