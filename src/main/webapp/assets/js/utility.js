@@ -114,6 +114,18 @@ function setValue(spanId, value) {
 }
 
 /**
+ * Checks if jquery object exists are not.
+ * @param id
+ * @returns {Boolean}
+ */
+function isIdExists(id) {
+	if( $(id).length > 0 ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * 
  * @param requestUrl
  * @param requestMethod
@@ -131,8 +143,16 @@ function performAJAX(requestUrl, requestMethod, postData, formId, callbackFn,
 		data : postData,
 		type : requestMethod,
 		contentType : myContentType,
+		beforeSend  : function(jqXHR, settings ) {
+			console.log("before seeing");
+			if(isIdExists("#dyna_loadingMsg")) {
+				$("#dyna_loadingMsg").toggle();
+			}
+			if(isIdExists("#dyna_searchButton")) {
+				$("#dyna_searchButton").toggle();
+			}
+		},
 		success : function(result, status, xhr) {
-			console.log(status)
 			callbackFn(callbackFnArgumentsArray, result, status, xhr);
 		},
 		error : function(xhr, status, error) {
@@ -142,6 +162,14 @@ function performAJAX(requestUrl, requestMethod, postData, formId, callbackFn,
 			console.log(status);
 			console.log(error);
 			callbackFn(callbackFnArgumentsArray, error, status, xhr);
+		},
+		complete : function(xhr, status) {
+			if(isIdExists("#dyna_loadingMsg")) {
+				$("#dyna_loadingMsg").toggle();
+			}
+			if(isIdExists("#dyna_searchButton")) {
+				$("#dyna_searchButton").toggle();
+			}
 		}
 	}); 
 }

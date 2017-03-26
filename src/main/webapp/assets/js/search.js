@@ -4,7 +4,6 @@
  * Perform Asset Search
  */
 function performAssetSearch() {
-	
 	if(isNotEmpty("#externalId")) {
 		var selectedText = $("#externalId").val();
 		var URL = "./asset/"+selectedText;

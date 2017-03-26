@@ -1,6 +1,9 @@
 
 $(document).ready(function() {
 	
+	// IMPORTANT: to hide by default.
+	$("#dyna_loadingMsg").hide();
+	
 	/**
 	 * Used to highlight the selected menu in header
 	 */

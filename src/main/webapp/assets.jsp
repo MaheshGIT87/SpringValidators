@@ -16,12 +16,19 @@
 		                <div class="input-group col-md-12">
 		                    <input type="text" id="externalId" class="form-control input-lg" placeholder="External Id" />
 		                    <span class="input-group-btn">
-		                        <button class="btn btn-info btn-lg" type="button" onClick="performAssetSearch()">
+		                        <button id="dyna_searchButton" class="btn btn-info btn-lg" type="button" onClick="performAssetSearch()">
 		                            <i class="glyphicon glyphicon-search"></i>
 		                        </button>
+		                        <button id="dyna_loadingMsg" class="btn btn-sm btn-warning">
+					        		<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...
+					        	</button>
 		                    </span>
 		                </div>
 		            </div>
+		        </div>
+		        <div class="col-md-6">
+		        	<br/><br/>
+		        	
 		        </div>
 			</div>
 			<hr />

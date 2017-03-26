@@ -8,9 +8,26 @@ body {
 dt {
     font-weight: 100;
 }
-dd {
+dd span {
 	font-weight: 700;
 }
+
+/* Loading Styles Start */
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+/* Loading Styles End */
 
 /** Custom Search Styles Start**/
 #custom-search-input{
