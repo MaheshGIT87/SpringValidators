@@ -3,6 +3,8 @@
  */
 package com.primasolv.devicedata.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.primasolv.devicedata.model.Asset;
@@ -14,6 +16,6 @@ import com.primasolv.devicedata.model.Asset;
 @Service
 public interface AssetService {
 	
-	public Asset getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber);
+	public Map<String, Object> getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber);
 	
 }

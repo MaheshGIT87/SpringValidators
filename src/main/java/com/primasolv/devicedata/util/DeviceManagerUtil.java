@@ -6,6 +6,7 @@ package com.primasolv.devicedata.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.converters.SqlTimestampConverter;
@@ -33,6 +34,15 @@ public class DeviceManagerUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(Calendar.getInstance().getTime());
     }
+	
+	public static String generateCommaSeperated(List<Integer> ids) {
+		StringBuilder result = new StringBuilder();
+	    for(Integer id : ids) {
+	        result.append(id.intValue());
+	        result.append(",");
+	    }
+	    return result.length() > 0 ? result.substring(0, result.length() - 1): "";
+	}
 	
 	public static String convertBeanValueToString(DynaBean beanToParse, String value) {
         String result = null;

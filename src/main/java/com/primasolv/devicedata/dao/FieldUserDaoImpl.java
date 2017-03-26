@@ -50,8 +50,8 @@ public class FieldUserDaoImpl implements FieldUserDao {
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
 		List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
 		try {
-			//TODO: Ids
-			String sql = String.format(SQL_USER_ASSET_BY_FIELD_USER_IDS, 1);
+			String sql = String.format(SQL_USER_ASSET_BY_FIELD_USER_IDS, DeviceManagerUtil.generateCommaSeperated(fieldUserIds));
+			System.out.println(fieldUserIds);
 			Collection<DynaBean> result = jcm.execute(sql);
 	        for (Object aResult : result) {
 	            DynaBean myBean = (DynaBean) aResult;
