@@ -19,7 +19,7 @@ import com.primasolv.devicedata.util.DeviceManagerUtil;
 public class DeviceManagerDaoImpl implements DeviceManagerDao {
 	
 	
-	private static final String SQL_DEVICE_MN = "select * from wt2_dm";
+	private static final String SQL_DEVICE_MN = "select * from wt2_dm where db_schema IS NOT NULL;";
 	private static final String SQL_TEST_SCHEMA = "dm_latamtest";
 
 	@SuppressWarnings("unchecked")

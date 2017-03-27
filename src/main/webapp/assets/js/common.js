@@ -23,13 +23,20 @@ $(document).ready(function() {
 		$('.input-group #search_param').val(param);
 	});
 	
-	
-	$('#dyna_selDeviceManager').change(function (e) { 
-		var selectedValue = getSelectedValue("#dyna_selDeviceManager");
-		var selectedText = $("#dyna_selDeviceManager option:selected").text();
-		var URL = "./selectEnv/"+selectedValue+"/"+selectedText;
+    
+    $('#dyna_selDeviceManager li').click(function (e) { 
+    	var dmDisplayName = $(this).find("a").text();
+    	var dmSchemaName = $(this).find("a").attr("title");
+		var URL = "./selectEnv/"+dmSchemaName+"/"+dmDisplayName;
 	    performAJAX(URL, "GET", "", "", changeRegionEnv_callBack, "", "");
 	});
+	
+//	$('#dyna_selDeviceManager').change(function (e) { 
+//		var selectedValue = getSelectedValue("#dyna_selDeviceManager");
+//		var selectedText = $("#dyna_selDeviceManager option:selected").text();
+//		var URL = "./selectEnv/"+selectedValue+"/"+selectedText;
+//	    performAJAX(URL, "GET", "", "", changeRegionEnv_callBack, "", "");
+//	});
 	
 	function changeRegionEnv_callBack(callBackArguments, result, status, xhr){	
 		$("#dyna_selectedDmName").html(result.selectedDmName);

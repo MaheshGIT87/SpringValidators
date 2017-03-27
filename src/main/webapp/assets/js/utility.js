@@ -144,7 +144,6 @@ function performAJAX(requestUrl, requestMethod, postData, formId, callbackFn,
 		type : requestMethod,
 		contentType : myContentType,
 		beforeSend  : function(jqXHR, settings ) {
-			console.log("before seeing");
 			if(isIdExists("#dyna_loadingMsg")) {
 				$("#dyna_loadingMsg").toggle();
 			}

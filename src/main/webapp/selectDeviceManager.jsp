@@ -12,11 +12,6 @@
 			<div class="container theme-showcase" role="main">
 				<div class="jumbotron">
 					<h1>Select Device Manager</h1>
-					<select id="dyna_selDeviceManager">
-						<c:forEach items="${deviceManagerList}" var="deviceManager">
-					        <option value="dm_${deviceManager.region}${deviceManager.dmEnvType}">${deviceManager.dmName}</option>
-					    </c:forEach>
-					</select>
 				</div>
 			</div>
 		</div>

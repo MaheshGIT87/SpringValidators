@@ -14,17 +14,24 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="./selectDeviceManager.jsp">Home (Region: <strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)</a>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					Search By<span class="caret"></span>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+						Schema (<strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)
+						<span class="caret"></span>
 					</a>
-					<ul class="dropdown-menu">
-						<li><a href="assets.jsp">Assets</a></li>
-						<li><a href="#">Dealer</a></li>
-						<li><a href="#">Field User</a></li>
+					<ul id="dyna_selDeviceManager" class="dropdown-menu">
+						<c:forEach items="${deviceManagerList}" var="deviceManager">
+					        <li value="${deviceManager.dbSchema}"><a href="#" title="${deviceManager.dbSchema}">${deviceManager.dmName}</a></li>
+					    </c:forEach>
 					</ul>
+				</li>
+				<li>
+					<a href="./assets.jsp">Assets</a>
+				</li>
+				<li>
+					<a href="./dealer.jsp">Dealer</a>
+				</li>
+				<li>
+					<a href="./fieldUser.jsp">Field User</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
