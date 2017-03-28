@@ -16,4 +16,6 @@ import com.primasolv.devicedata.model.UserAsset;
 @Repository
 public interface UserAssetDao {
 	public List<UserAsset> getUserAssetByAssetId(String SCHEMA_NAME, int assetId) throws Exception;
+	
+	public List<UserAsset> getUserAssetByFieldUserId(String SCHEMA_NAME, int fieldUserId) throws Exception;
 }

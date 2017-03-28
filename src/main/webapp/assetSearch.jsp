@@ -14,7 +14,7 @@
 		    		<h4>Asset Search</h4>
 		            <div id="custom-search-input">
 		                <div class="input-group col-md-12">
-		                    <input type="text" id="externalId" class="form-control input-lg" placeholder="External Id" />
+		                    <input type="text" id="dyna_searchSerialNo" class="form-control input-lg" placeholder="Serial No." />
 		                    <span class="input-group-btn">
 		                        <button id="dyna_searchButton" class="btn btn-info btn-lg" type="button" onClick="performAssetSearch()">
 		                            <i class="glyphicon glyphicon-search"></i>
@@ -28,7 +28,6 @@
 		        </div>
 		        <div class="col-md-6">
 		        	<br/><br/>
-		        	
 		        </div>
 			</div>
 			<hr />

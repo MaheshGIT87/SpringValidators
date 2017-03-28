@@ -9,4 +9,5 @@
 <script type="text/JavaScript" src="<c:url value="/assets/plugins/dataTables-buttons/js/buttons.html5.min.js" />"></script>
 <script type="text/JavaScript" src="<c:url value="/assets/js/utility.js" />"></script>
 <script type="text/JavaScript" src="<c:url value="/assets/js/common.js" />"></script>
-<script type="text/JavaScript" src="<c:url value="/assets/js/search.js" />"></script>
+<script type="text/JavaScript" src="<c:url value="/assets/js/assetSearch.js" />"></script>
+<script type="text/JavaScript" src="<c:url value="/assets/js/fieldUserSearch.js" />"></script>

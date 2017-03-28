@@ -4,12 +4,12 @@
  * Perform Asset Search
  */
 function performAssetSearch() {
-	if(isNotEmpty("#externalId")) {
-		var selectedText = $("#externalId").val();
+	if(isNotEmpty("#dyna_searchSerialNo")) {
+		var selectedText = $("#dyna_searchSerialNo").val();
 		var URL = "./asset/"+selectedText;
 		performAJAX(URL, "GET", "", "", performAssetSearch_callBack, "", "");
 	} else {
-		alert("Enter external id value");
+		alert("Enter Serial No.");
 	}
 }
 

@@ -22,6 +22,7 @@ import com.primasolv.devicedata.util.DeviceManagerUtil;
 public class UserAssetDaoImpl implements UserAssetDao {
 	
 	private  static final String SQL_USER_ASSET_BY_ASSET_ID = "select * from user_asset_mapping where asset_id=%s";
+	private  static final String SQL_USER_ASSET_BY_FIELD_USER_ID = "select * from user_asset_mapping where field_user_id=%s";
 
 	/* (non-Javadoc)
 	 * @see com.primasolv.devicedata.dao.UserDao#getUserAssetByAssetId(java.lang.String, int)
@@ -45,6 +46,26 @@ public class UserAssetDaoImpl implements UserAssetDao {
 		return userAssetList;
 	}
 	
+
+	@Override
+	public List<UserAsset> getUserAssetByFieldUserId(String SCHEMA_NAME, int fieldUserId) throws Exception {
+		JdbcConnectionManager jcm = new JdbcConnectionManager();
+		jcm.setConnection(SCHEMA_NAME.toLowerCase());
+		List<UserAsset> userAssetList = new ArrayList<UserAsset>();
+		try {
+			String sql = String.format(SQL_USER_ASSET_BY_FIELD_USER_ID, fieldUserId);
+			Collection<DynaBean> result = jcm.execute(sql);
+	        for (Object aResult : result) {
+	            DynaBean myBean = (DynaBean) aResult;
+	            userAssetList.add(convertBeanToUserAsset(myBean));
+	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return userAssetList;
+	}
+
 	
 	/**
 	 * 
@@ -63,5 +84,6 @@ public class UserAssetDaoImpl implements UserAssetDao {
 		}
 		return userAsset;
 	}
+
 
 }

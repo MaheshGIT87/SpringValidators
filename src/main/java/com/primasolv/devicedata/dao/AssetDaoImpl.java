@@ -22,6 +22,7 @@ import com.primasolv.devicedata.util.DeviceManagerUtil;
 public class AssetDaoImpl implements AssetDao {
 
 	private  static final String SQL_ASSET_BY_SERIAL_NO = "select * from asset where serial_number='%s'";
+	private  static final String SQL_ASSET_BY_ASSET_IDS = "select * from asset where id in ('%s')";
 	
 	
 	/* (non-Javadoc)
@@ -48,13 +49,30 @@ public class AssetDaoImpl implements AssetDao {
 		}
 		return asset;
 	}
+
 	
+	@Override
+	public List<Asset> getAssetByIds(String SCHEMA_NAME, List<Integer> assetIds) throws Exception {
+		JdbcConnectionManager jcm = new JdbcConnectionManager();
+		jcm.setConnection(SCHEMA_NAME.toLowerCase());
+		List<Asset> assetList = new ArrayList<Asset>();
+		try {
+			String sql = String.format(SQL_ASSET_BY_ASSET_IDS, DeviceManagerUtil.generateCommaSeperated(assetIds));
+			Collection<DynaBean> result = jcm.execute(sql);
+	        for (Object aResult : result) {
+	            DynaBean myBean = (DynaBean) aResult;
+	            assetList.add(convertBeanToAsset(myBean));
+	        }
+		} catch (Exception e) {
+			throw e;
+		}
+		return assetList;
+	}
 	
 	/**
      * 
      * @param myBean
      * @return
-     * 
      */
     private Asset convertBeanToAsset(DynaBean myBean) {
     	Asset asset = new Asset();

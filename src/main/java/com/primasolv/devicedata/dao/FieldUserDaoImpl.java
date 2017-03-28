@@ -23,8 +23,7 @@ public class FieldUserDaoImpl implements FieldUserDao {
 	
 	private  static final String SQL_USER_ASSET_BY_FIELD_USER_ID = "select * from field_user where id=%s";
 	private  static final String SQL_USER_ASSET_BY_FIELD_USER_IDS = "select * from field_user where id in (%s)";
-
-	
+	private  static final String SQL_USER_ASSET_BY_EXTERNAL_ID = "select * from field_user where external_id='%s'";
 
 	@Override
 	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId) throws Exception{
@@ -68,6 +67,31 @@ public class FieldUserDaoImpl implements FieldUserDao {
 		return fieldUserList;
 	}
 	
+
+	@Override
+	public FieldUser getFieldUserByExternalId(String SCHEMA_NAME, String externalId) throws Exception {
+		JdbcConnectionManager jcm = new JdbcConnectionManager();
+		jcm.setConnection(SCHEMA_NAME.toLowerCase());
+		FieldUser user = new FieldUser();
+		try {
+			List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
+			String sql = String.format(SQL_USER_ASSET_BY_EXTERNAL_ID, externalId);
+			Collection<DynaBean> result = jcm.execute(sql);
+	        for (Object aResult : result) {
+	            DynaBean myBean = (DynaBean) aResult;
+	            fieldUserList.add(convertBeanToFieldUser(myBean));
+	        }
+	        if(!fieldUserList.isEmpty()) {
+	        	user = fieldUserList.get(0);
+	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return user;
+	}
+	
+	
 	/**
 	 * 
 	 * @param myBean
@@ -87,6 +111,5 @@ public class FieldUserDaoImpl implements FieldUserDao {
 		}
 		return user;
 	}
-	
 
 }
