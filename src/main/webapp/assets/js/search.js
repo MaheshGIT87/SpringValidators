@@ -21,12 +21,16 @@ function performAssetSearch() {
  * @param xhr
  */
 function performAssetSearch_callBack(callBackArguments, result, status, xhr){
-	if(result.status == "success") {
+	if(result.status) {
 		var assetDetails = result.asset;
 		var fieldUserData = convertFieldUserForDatatables(result.fieldUserList);
 		
 		populateAssetDetails(assetDetails);
 		populateFieldUserTable("#tblFieldUsers", fieldUserData);
+	} else {
+		$("#dyna_errorAlert").find("span").text(result.errMsg);
+		$("#dyna_errorAlert").show();
+		$("#dyna_errorAlert").fadeOut();
 	}
 }
 

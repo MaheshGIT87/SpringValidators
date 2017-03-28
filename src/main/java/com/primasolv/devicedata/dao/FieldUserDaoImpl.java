@@ -27,7 +27,7 @@ public class FieldUserDaoImpl implements FieldUserDao {
 	
 
 	@Override
-	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId) {
+	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId) throws Exception{
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
 		List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
@@ -40,12 +40,13 @@ public class FieldUserDaoImpl implements FieldUserDao {
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		return fieldUserList.get(0);
 	}
 
 	@Override
-	public List<FieldUser> getFieldUsersByIds(String SCHEMA_NAME, List<Integer> fieldUserIds) {
+	public List<FieldUser> getFieldUsersByIds(String SCHEMA_NAME, List<Integer> fieldUserIds) throws Exception {
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
 		List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
@@ -59,6 +60,7 @@ public class FieldUserDaoImpl implements FieldUserDao {
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		return fieldUserList;
 	}

@@ -16,5 +16,5 @@ import com.primasolv.devicedata.model.DeviceManager;
 @Service
 public interface DeviceManagerService {
 	
-	public List<DeviceManager> getDeviceManagerList();
+	public List<DeviceManager> getDeviceManagerList() throws Exception;
 }

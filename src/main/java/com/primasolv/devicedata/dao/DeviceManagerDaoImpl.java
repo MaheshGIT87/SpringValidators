@@ -24,7 +24,7 @@ public class DeviceManagerDaoImpl implements DeviceManagerDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DeviceManager> getDeviceManagerNames() {
+	public List<DeviceManager> getDeviceManagerNames() throws Exception {
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SQL_TEST_SCHEMA);
 		List<DeviceManager> deviceManageList = new ArrayList<DeviceManager>();
@@ -36,8 +36,8 @@ public class DeviceManagerDaoImpl implements DeviceManagerDao {
 	            deviceManageList.add(convertBeanToDeviceManager(myBean));
 	        }
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw e;
 		}
 		return deviceManageList;
 	}

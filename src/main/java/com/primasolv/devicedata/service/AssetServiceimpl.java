@@ -39,32 +39,40 @@ public class AssetServiceimpl implements AssetService {
 	 * @see com.primasolv.devicedata.service.AssetService#getAssetDetailsBySerialNumber(java.lang.String)
 	 */
 	@Override
-	public Map<String, Object> getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber) {
+	public Map<String, Object> getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber) throws Exception{
 		Map<String, Object> rtnObject = new HashMap<String, Object>();
+		boolean status = false;
 		if(DeviceManagerUtil.IsNotEmpty(SCHEMA_NAME) && DeviceManagerUtil.IsNotEmpty(serialNumber)) {
 			
-			Asset asset = assetDao.getAssetBySerialNumber(SCHEMA_NAME, serialNumber);
-			rtnObject.put("asset", asset);
-			
-			if(asset != null) {
-				List<UserAsset> userAssetList = userAssetDao.getUserAssetByAssetId(SCHEMA_NAME, asset.getId());
+			try {
+				Asset asset = assetDao.getAssetBySerialNumber(SCHEMA_NAME, serialNumber);
+				rtnObject.put("asset", asset);
 				
-				if(userAssetList!=null && !userAssetList.isEmpty()) {
-					rtnObject.put("userAssetList", userAssetList);
+				if(asset != null) {
+					List<UserAsset> userAssetList = userAssetDao.getUserAssetByAssetId(SCHEMA_NAME, asset.getId());
 					
-					List<Integer> fieldUserIds = new ArrayList<Integer>();
-					for(UserAsset userAsset : userAssetList) {
-						fieldUserIds.add(userAsset.getFieldUserId());
+					if(userAssetList!=null && !userAssetList.isEmpty()) {
+						rtnObject.put("userAssetList", userAssetList);
+						
+						List<Integer> fieldUserIds = new ArrayList<Integer>();
+						for(UserAsset userAsset : userAssetList) {
+							fieldUserIds.add(userAsset.getFieldUserId());
+						}
+						
+						if(!fieldUserIds.isEmpty()) {
+							List<FieldUser> fieldUserList = fieldUserDao.getFieldUsersByIds(SCHEMA_NAME, fieldUserIds);
+							if(fieldUserList!=null) {
+								rtnObject.put("fieldUserList", fieldUserList);
+							}
+							status = true;
+						}
 					}
-					
-					List<FieldUser> fieldUserList = fieldUserDao.getFieldUsersByIds(SCHEMA_NAME, fieldUserIds);
-					if(fieldUserList!=null) {
-						rtnObject.put("fieldUserList", fieldUserList);
-					}
-				}
+				} 
+			} catch (Exception e) {
+				throw e;
 			}
 		}
-		
+		rtnObject.put("status", status);
 		return rtnObject;
 	}
 

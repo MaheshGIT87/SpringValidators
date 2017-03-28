@@ -25,7 +25,7 @@ public class DeviceManagerServiceImpl implements DeviceManagerService {
 	 * @see com.primasolv.devicedata.service.DeviceManagerService#getDeviceManagerList()
 	 */
 	@Override
-	public List<DeviceManager> getDeviceManagerList() {
+	public List<DeviceManager> getDeviceManagerList() throws Exception {
 		return deviceManagerDao.getDeviceManagerNames();
 	}
 

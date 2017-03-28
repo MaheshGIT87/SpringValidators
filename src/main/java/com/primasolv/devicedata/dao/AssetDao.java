@@ -14,6 +14,6 @@ import com.primasolv.devicedata.model.Asset;
 @Repository
 public interface AssetDao {
 	
-	public Asset getAssetBySerialNumber(String schemaName, String serialNumber);
+	public Asset getAssetBySerialNumber(String schemaName, String serialNumber) throws Exception;
 	
 }

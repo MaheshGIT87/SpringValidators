@@ -20,5 +20,5 @@ public interface DeviceManagerDao {
 	
 	public void getEnvTypes();
 	
-	public List<DeviceManager> getDeviceManagerNames();
+	public List<DeviceManager> getDeviceManagerNames() throws Exception;
 }

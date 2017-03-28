@@ -6,7 +6,9 @@ package com.primasolv.devicedata.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.DynaBean;
 
@@ -60,6 +62,16 @@ public class DeviceManagerUtil {
 	        result.append(",");
 	    }
 	    return result.length() > 0 ? result.substring(0, result.length() - 1): "";
+	}
+	
+	
+	public static Map<String, Object> baseResObject() {
+		Map<String, Object> rtnObj = new HashMap<String, Object>();
+		rtnObj.put("status", false);
+		rtnObj.put("errMsg", "");
+		rtnObj.put("devErrMsg", "");
+		rtnObj.put("stackTrace", "");
+		return rtnObj;
 	}
 	
 	/**

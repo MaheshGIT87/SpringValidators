@@ -3,6 +3,7 @@
  */
 package com.primasolv.devicedata.web.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -27,11 +28,20 @@ public class AssetController {
 	@GetMapping(value = "/asset/{serialNo}")
 	public Map<String, Object> getAssetBySerialNo(@PathVariable("serialNo") String serialNo,  HttpSession session) {
 		System.out.println("Selected serialNo::" + serialNo);
-		Map<String, Object> rtnObject = null;
-		if(serialNo!=null) {
-			String schema_name = (String)session.getAttribute("selectedDmName");
-			rtnObject = assetService.getAssetDetailsBySerialNumber(schema_name, serialNo);
-			rtnObject.put("status", "success");
+		Map<String, Object> rtnObject = new HashMap<String, Object>();
+		try {
+			if(serialNo!=null) {
+				String schema_name = (String)session.getAttribute("selectedDmName");
+				rtnObject = assetService.getAssetDetailsBySerialNumber(schema_name, serialNo);
+				if(!(boolean)rtnObject.get("status")) {
+					rtnObject.put("errMsg", "Unable to fetch the details");
+				}
+			}
+		} catch (Exception e) {
+			rtnObject.put("stackTrace", e.getMessage());
+			rtnObject.put("status", false);
+			rtnObject.put("errMsg", "An Exception has been occurred");
+			e.printStackTrace();
 		}
 		return rtnObject;
 	}

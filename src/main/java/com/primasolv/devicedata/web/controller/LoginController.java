@@ -35,21 +35,26 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
     public String submit(Model model, @ModelAttribute("loginBean") LoginBean loginBean, HttpSession session) {
-        if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) {
-        	User userData = loginService.checkLogin(loginBean.getUserName(), loginBean.getPassword());
-        	if(userData != null) {
-        		session.setAttribute("loggedInUser", userData);
-        		List<DeviceManager> deviceManagerList = deviceManagerService.getDeviceManagerList();
-        		session.setAttribute("deviceManagerList", deviceManagerList);
-        		return "selectDeviceManager";
-        	} else {
-        		model.addAttribute("error", "Invalid Details");
-                return "login";
-        	}
-        } else {
-            model.addAttribute("error", "Please enter Details");
-            return "login";
-        }
+        try {
+			if (loginBean != null && loginBean.getUserName() != null & loginBean.getPassword() != null) {
+				User userData = loginService.checkLogin(loginBean.getUserName(), loginBean.getPassword());
+				if(userData != null) {
+					session.setAttribute("loggedInUser", userData);
+					List<DeviceManager> deviceManagerList = deviceManagerService.getDeviceManagerList();
+					session.setAttribute("deviceManagerList", deviceManagerList);
+					return "selectDeviceManager";
+				} else {
+					model.addAttribute("error", "Invalid Details");
+			        return "login";
+				}
+			} else {
+			    model.addAttribute("error", "Please enter Details");
+			    return "login";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "login";
+		}
     }
 	
 }

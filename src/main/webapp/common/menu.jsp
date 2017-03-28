@@ -48,3 +48,11 @@
 		</div>
 	</div>
 </nav>
+<div class="container">
+	<div id="dyna_errorAlert" class="row" style="display:none;">
+		<div class="alert alert-danger fade in">
+		    <a href="#" class="close" data-dismiss="alert">&times;</a>
+		    <strong>Error!</strong> <span>A problem has been occurred while submitting your data.</span>
+		</div>
+	</div>
+</div>

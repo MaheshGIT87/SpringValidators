@@ -28,21 +28,25 @@ public class AssetDaoImpl implements AssetDao {
 	 * @see com.primasolv.devicedata.dao.AssetDao#getAssetBySerialNumber(java.lang.String)
 	 */
 	@Override
-	public Asset getAssetBySerialNumber(String SCHEMA_NAME, String serialNumber) {
+	public Asset getAssetBySerialNumber(String SCHEMA_NAME, String serialNumber) throws Exception {
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
-		List<Asset> assetList = new ArrayList<Asset>();
+		Asset asset = null;
 		try {
 			String sql = String.format(SQL_ASSET_BY_SERIAL_NO, serialNumber);
 			Collection<DynaBean> result = jcm.execute(sql);
+			List<Asset> assetList = new ArrayList<Asset>();
 	        for (Object aResult : result) {
 	            DynaBean myBean = (DynaBean) aResult;
 	            assetList.add(convertBeanToAsset(myBean));
 	        }
+	        if(!assetList.isEmpty()) {
+	        	asset = assetList.get(0);
+	        }
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		}
-		return assetList.get(0);
+		return asset;
 	}
 	
 	

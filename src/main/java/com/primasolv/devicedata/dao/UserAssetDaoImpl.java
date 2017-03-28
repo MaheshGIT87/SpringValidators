@@ -27,7 +27,7 @@ public class UserAssetDaoImpl implements UserAssetDao {
 	 * @see com.primasolv.devicedata.dao.UserDao#getUserAssetByAssetId(java.lang.String, int)
 	 */
 	@Override
-	public List<UserAsset> getUserAssetByAssetId(String SCHEMA_NAME, int assetId) {
+	public List<UserAsset> getUserAssetByAssetId(String SCHEMA_NAME, int assetId) throws Exception {
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
 		List<UserAsset> userAssetList = new ArrayList<UserAsset>();
@@ -40,6 +40,7 @@ public class UserAssetDaoImpl implements UserAssetDao {
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		return userAssetList;
 	}

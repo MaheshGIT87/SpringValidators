@@ -14,6 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AssetService {
 	
-	public Map<String, Object> getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber);
+	public Map<String, Object> getAssetDetailsBySerialNumber(String SCHEMA_NAME, String serialNumber) throws Exception;
 	
 }

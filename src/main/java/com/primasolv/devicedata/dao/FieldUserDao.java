@@ -16,7 +16,7 @@ import com.primasolv.devicedata.model.FieldUser;
 @Repository
 public interface FieldUserDao {
 	
-	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId);
+	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId) throws Exception;
 	
-	public List<FieldUser> getFieldUsersByIds(String SCHEMA_NAME, List<Integer> fieldUserIds);
+	public List<FieldUser> getFieldUsersByIds(String SCHEMA_NAME, List<Integer> fieldUserIds) throws Exception;
 }
