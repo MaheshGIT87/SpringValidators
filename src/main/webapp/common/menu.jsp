@@ -15,7 +15,7 @@
 			<ul class="nav navbar-nav">
 				<li>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-						Schema (<strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)
+						DM (<strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)
 						<span class="caret"></span>
 					</a>
 					<ul id="dyna_selDeviceManager" class="dropdown-menu">
@@ -25,13 +25,13 @@
 					</ul>
 				</li>
 				<li>
-					<a href="./assets.jsp">Assets</a>
+					<a href="./assetSearch.jsp">Assets</a>
 				</li>
 				<li>
-					<a href="./dealer.jsp">Dealer</a>
+					<a href="./dealerSearch.jsp">Dealer</a>
 				</li>
 				<li>
-					<a href="./fieldUser.jsp">Field User</a>
+					<a href="./fieldUserSearch.jsp">Field User</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
