@@ -30,19 +30,23 @@ public class FieldUserDaoImpl implements FieldUserDao {
 	public FieldUser getFieldUserById(String SCHEMA_NAME, int fieldUserId) throws Exception{
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
-		List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
+		FieldUser user = new FieldUser();
 		try {
+			List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
 			String sql = String.format(SQL_USER_ASSET_BY_FIELD_USER_ID, fieldUserId);
 			Collection<DynaBean> result = jcm.execute(sql);
 	        for (Object aResult : result) {
 	            DynaBean myBean = (DynaBean) aResult;
 	            fieldUserList.add(convertBeanToFieldUser(myBean));
 	        }
+	        if(!fieldUserList.isEmpty()) {
+	        	user = fieldUserList.get(0);
+	        }
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
-		return fieldUserList.get(0);
+		return user;
 	}
 
 	@Override
@@ -52,7 +56,6 @@ public class FieldUserDaoImpl implements FieldUserDao {
 		List<FieldUser> fieldUserList = new ArrayList<FieldUser>();
 		try {
 			String sql = String.format(SQL_USER_ASSET_BY_FIELD_USER_IDS, DeviceManagerUtil.generateCommaSeperated(fieldUserIds));
-			System.out.println(fieldUserIds);
 			Collection<DynaBean> result = jcm.execute(sql);
 	        for (Object aResult : result) {
 	            DynaBean myBean = (DynaBean) aResult;

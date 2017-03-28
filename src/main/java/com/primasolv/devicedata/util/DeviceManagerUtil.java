@@ -144,9 +144,6 @@ public class DeviceManagerUtil {
     public java.util.Date convertBeanValueToTimeStamp(DynaBean beanToParse, String value) {
         java.util.Date result = null;
         if (beanToParse.get(value) != null) {
-//            Object o = beanToParse.get(value);
-//            SqlTimestampConverter sqlTsConverter = new SqlTimestampConverter(o);
-//            String s = sqlTsConverter.toString();
             try {
                 result = sdfTimeStamp.parse(beanToParse.get(value).toString());
             } catch (ParseException pe) {

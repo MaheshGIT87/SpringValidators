@@ -31,7 +31,7 @@ public class AssetDaoImpl implements AssetDao {
 	public Asset getAssetBySerialNumber(String SCHEMA_NAME, String serialNumber) throws Exception {
 		JdbcConnectionManager jcm = new JdbcConnectionManager();
 		jcm.setConnection(SCHEMA_NAME.toLowerCase());
-		Asset asset = null;
+		Asset asset = new Asset();
 		try {
 			String sql = String.format(SQL_ASSET_BY_SERIAL_NO, serialNumber);
 			Collection<DynaBean> result = jcm.execute(sql);

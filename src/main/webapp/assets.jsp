@@ -33,8 +33,14 @@
 			</div>
 			<hr />
 			<div class="panel panel-default">
-				<div class="panel-heading collapsed" data-toggle="collapse" data-target="#collapseOrderItems1"> 
-					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;<b>Asset Details</b> <i class="indicator glyphicon glyphicon-chevron-down pull-right" ></i>
+				<div class="panel-heading text-center collapsed" data-toggle="collapse" data-target="#collapseOrderItems1"> 
+					<span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;
+					Asset Id: <b><span id="dyna_header_assetId">-</span></b> 
+					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					Dealer Code: <b><span id="dyna_header_dealerCode">-</span></b> 
+					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					Source: <b><span id="dyna_header_source">-</span></b>
+					<i class="indicator glyphicon glyphicon-chevron-down pull-right" ></i>
 				</div>
 				<div class="collapse" id="collapseOrderItems1">
 					<div class="panel-body">

@@ -23,8 +23,10 @@ function performAssetSearch() {
 function performAssetSearch_callBack(callBackArguments, result, status, xhr){
 	if(result.status) {
 		var assetDetails = result.asset;
+		var dealerDetails = result.dealer;
 		var fieldUserData = convertFieldUserForDatatables(result.fieldUserList);
 		
+		populateAssetPanelHeaderDetails(assetDetails, dealerDetails);
 		populateAssetDetails(assetDetails);
 		populateFieldUserTable("#tblFieldUsers", fieldUserData);
 	} else {
@@ -34,6 +36,16 @@ function performAssetSearch_callBack(callBackArguments, result, status, xhr){
 	}
 }
 
+
+/**
+ * Populate Asset Panel Header Details
+ * @param assetDetails
+ */
+function populateAssetPanelHeaderDetails(assetDetails, dealerDetails) {
+	setValue("#dyna_header_assetId", assetDetails.id);
+	setValue("#dyna_header_dealerCode", dealerDetails.dealerCode);
+	setValue("#dyna_header_source", assetDetails.source);
+}
 
 /**
  * Populate Asset Details

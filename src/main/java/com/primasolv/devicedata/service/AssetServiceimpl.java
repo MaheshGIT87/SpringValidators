@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.primasolv.devicedata.dao.AssetDao;
+import com.primasolv.devicedata.dao.DealerDao;
 import com.primasolv.devicedata.dao.FieldUserDao;
 import com.primasolv.devicedata.dao.UserAssetDao;
 import com.primasolv.devicedata.model.Asset;
+import com.primasolv.devicedata.model.Dealer;
 import com.primasolv.devicedata.model.FieldUser;
 import com.primasolv.devicedata.model.UserAsset;
 import com.primasolv.devicedata.util.DeviceManagerUtil;
@@ -35,6 +37,9 @@ public class AssetServiceimpl implements AssetService {
 	@Autowired
 	FieldUserDao fieldUserDao;
 	
+	@Autowired
+	DealerDao dealerDao;
+	
 	/* (non-Javadoc)
 	 * @see com.primasolv.devicedata.service.AssetService#getAssetDetailsBySerialNumber(java.lang.String)
 	 */
@@ -46,19 +51,20 @@ public class AssetServiceimpl implements AssetService {
 			
 			try {
 				Asset asset = assetDao.getAssetBySerialNumber(SCHEMA_NAME, serialNumber);
-				rtnObject.put("asset", asset);
-				
 				if(asset != null) {
-					List<UserAsset> userAssetList = userAssetDao.getUserAssetByAssetId(SCHEMA_NAME, asset.getId());
+					rtnObject.put("asset", asset);
 					
+					if(asset.getDealerId() != 0) {
+						Dealer dealer = dealerDao.getDealerById(SCHEMA_NAME, asset.getDealerId());
+						rtnObject.put("dealer", dealer);
+					}
+					List<UserAsset> userAssetList = userAssetDao.getUserAssetByAssetId(SCHEMA_NAME, asset.getId());
 					if(userAssetList!=null && !userAssetList.isEmpty()) {
 						rtnObject.put("userAssetList", userAssetList);
-						
 						List<Integer> fieldUserIds = new ArrayList<Integer>();
 						for(UserAsset userAsset : userAssetList) {
 							fieldUserIds.add(userAsset.getFieldUserId());
 						}
-						
 						if(!fieldUserIds.isEmpty()) {
 							List<FieldUser> fieldUserList = fieldUserDao.getFieldUsersByIds(SCHEMA_NAME, fieldUserIds);
 							if(fieldUserList!=null) {
