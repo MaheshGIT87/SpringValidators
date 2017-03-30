@@ -5,6 +5,14 @@ $(document).ready(function() {
 	$("#dyna_loadingMsg").hide();
 	
 	/**
+	 * 
+	 */
+	function showErrorMsg(errMsg, timeFrame) {
+		$("#dyna_errorAlert").find("span").text(errMsg);
+		$("#dyna_loadingMsg").show().fadeOut(timeFrame);
+	}
+	
+	/**
 	 * Used to highlight the selected menu in header
 	 */
 	$(".nav a").on("click", function(){

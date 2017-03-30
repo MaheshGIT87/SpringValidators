@@ -24,15 +24,14 @@ function performFieldUserSearch_callBack(callBackArguments, result, status, xhr)
 	if(result.status) {
 		var fieldUserDetails = result.fieldUser;
 		var assetListData = convertAssetListForDatatables(result.assetList);
-		
 		populateFieldUserPanelHeaderDetails(fieldUserDetails);
 		populateFieldUserDetails(fieldUserDetails);
 		populateAssetTable("#tblAssets", assetListData);
-		
 	} else {
+//		showErrorMsg(result.errMsg, 5000);
 		$("#dyna_errorAlert").find("span").text(result.errMsg);
 		$("#dyna_errorAlert").show();
-		$("#dyna_errorAlert").fadeOut();
+		$("#dyna_errorAlert").fadeOut(5000);
 	}
 }
 
