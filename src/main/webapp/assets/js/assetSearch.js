@@ -115,7 +115,7 @@ function populateFieldUserTable(tableId, fieldUserData) {
 function convertFieldUserForDatatables(fieldUserList) {
 	var rtnValue = [];
 	$.each(fieldUserList, function(index,obj) {
-		var x1 = [obj.id, obj.externalId, obj.firstName, obj.lastName, obj.source, obj.owner];
+		var x1 = [obj.externalId, obj.firstName, obj.lastName, obj.source, obj.owner];
 		rtnValue.push(x1);
 	});
 	return rtnValue;

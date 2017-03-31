@@ -1,0 +1,39 @@
+{
+    "dm_schema": [
+        {
+            "schema": "dm_latamtest",
+            "url": "jdbc:mysql://infra-wt2feedback-01.chrysler.fcawitech-internal.com:3306/",
+            "user": "knunna.ro",
+            "password": "66DIOwoOmLvy",
+            "displayName": "LATAM TEST"
+        },
+        {
+            "schema": "dm_emeapilot",
+            "url": "jdbc:mysql://infra-wt2feedback-01.chrysler.fcawitech-internal.com:3306/",
+            "user": "knunna.ro",
+            "password": "66DIOwoOmLvy",
+            "displayName": "EMEA PILOT"
+        },
+        {
+            "schema": "dm_apacpilot",
+            "url": "jdbc:mysql://infra-wt2feedback-01.chrysler.fcawitech-internal.com:3306/",
+            "user": "knunna.ro",
+            "password": "66DIOwoOmLvy",
+            "displayName": "APAC PILOT"
+        },
+        {
+            "schema": "dm_latampilot",
+            "url": "jdbc:mysql://infra-wt2feedback-01.chrysler.fcawitech-internal.com:3306/",
+            "user": "knunna.ro",
+            "password": "66DIOwoOmLvy",
+            "displayName": "LATAM PILOT"
+        },
+        {
+            "schema": "dm_naftapilot",
+            "url": "jdbc:mysql://infra-wt2feedback-01.chrysler.fcawitech-internal.com:3306/",
+            "user": "knunna.ro",
+            "password": "66DIOwoOmLvy",
+            "displayName": "NAFTA PILOT"
+        }
+    ]
+}

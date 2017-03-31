@@ -22,7 +22,7 @@ import com.primasolv.devicedata.util.DeviceManagerUtil;
 public class AssetDaoImpl implements AssetDao {
 
 	private  static final String SQL_ASSET_BY_SERIAL_NO = "select * from asset where serial_number='%s'";
-	private  static final String SQL_ASSET_BY_ASSET_IDS = "select * from asset where id in ('%s')";
+	private  static final String SQL_ASSET_BY_ASSET_IDS = "select * from asset where id in (%s)";
 	
 	
 	/* (non-Javadoc)
@@ -64,6 +64,7 @@ public class AssetDaoImpl implements AssetDao {
 	            assetList.add(convertBeanToAsset(myBean));
 	        }
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw e;
 		}
 		return assetList;

@@ -14,8 +14,8 @@ public class PropertiesReader {
 	
 	public String getPropertyValue(String propertyKey){
 		Properties properties = new Properties();
-		InputStream in = this.getClass().getClassLoader().getResourceAsStream("application.properties");
 		try {
+			InputStream in = this.getClass().getClassLoader().getResourceAsStream("appDeviceManagerConfig.properties");
 			properties.load(in);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -26,7 +26,7 @@ public class PropertiesReader {
 	}
 	
 	public static void main(String[] args){
-			System.out.println(new PropertiesReader().getPropertyValue("source.folder"));
+			System.out.println(new PropertiesReader().getPropertyValue("dm_latamtest.database.url"));
 	}
 
 }

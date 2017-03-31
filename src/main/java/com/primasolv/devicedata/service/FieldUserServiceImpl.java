@@ -45,7 +45,7 @@ public class FieldUserServiceImpl implements FieldUserService {
 				if(fieldUser != null && DeviceManagerUtil.IsNotEmpty(fieldUser.getExternalId())) {
 					rtnObject.put("fieldUser", fieldUser);
 					
-					List<UserAsset> userAssetList = userAssetDao.getUserAssetByAssetId(SCHEMA_NAME, fieldUser.getId());
+					List<UserAsset> userAssetList = userAssetDao.getUserAssetByFieldUserId(SCHEMA_NAME, fieldUser.getId());
 					if(userAssetList!=null && !userAssetList.isEmpty()) {
 						rtnObject.put("userAssetList", userAssetList);
 						List<Integer> assetIds = new ArrayList<Integer>();
