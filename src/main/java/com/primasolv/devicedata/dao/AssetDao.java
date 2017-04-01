@@ -20,4 +20,6 @@ public interface AssetDao {
 	
 	public List<Asset> getAssetByIds(String SCHEMA_NAME, List<Integer> assetIds) throws Exception;
 	
+	public List<String> getAllAssetSerialNos(String SCHEMA_NAME) throws Exception;
+	
 }

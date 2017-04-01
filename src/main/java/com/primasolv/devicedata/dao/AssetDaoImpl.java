@@ -23,6 +23,7 @@ public class AssetDaoImpl implements AssetDao {
 
 	private  static final String SQL_ASSET_BY_SERIAL_NO = "select * from asset where serial_number='%s'";
 	private  static final String SQL_ASSET_BY_ASSET_IDS = "select * from asset where id in (%s)";
+	private  static final String SQL_GET_ALL_ASSETS_SERIAL_NO = "select serial_number from asset";
 	
 	
 	/* (non-Javadoc)
@@ -67,6 +68,26 @@ public class AssetDaoImpl implements AssetDao {
 			e.printStackTrace();
 			throw e;
 		}
+		return assetList;
+	}
+	
+	@Override
+	public List<String> getAllAssetSerialNos(String SCHEMA_NAME) throws Exception {
+		JdbcConnectionManager jcm = new JdbcConnectionManager();
+		jcm.setNewConnection(SCHEMA_NAME.toLowerCase());
+		List<String> assetList = new ArrayList<String>();
+		
+		try {
+			Collection<DynaBean> result = jcm.execute(SQL_GET_ALL_ASSETS_SERIAL_NO);
+	        for (Object aResult : result) {
+	            DynaBean myBean = (DynaBean) aResult;
+	            assetList.add(DeviceManagerUtil.convertBeanValueToString(myBean, "serial_number"));
+	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
 		return assetList;
 	}
 	

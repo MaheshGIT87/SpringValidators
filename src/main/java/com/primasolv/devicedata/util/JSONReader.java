@@ -16,14 +16,14 @@ import org.json.simple.parser.JSONParser;
  * @author kiran
  *
  */
-public class JSON_Reader {
+public class JSONReader {
 	
 	private static Map<String, Object> dmSchemas = new HashMap<String, Object>();
 	
 	static {
 		JSONParser parser = new JSONParser();
 		try {
-			Object object = parser.parse(new FileReader(JSON_Reader.class.getClassLoader().getResource("appDeviceManagerConfig.json").getFile()));
+			Object object = parser.parse(new FileReader(JSONReader.class.getClassLoader().getResource("appDeviceManagerConfig.json").getFile()));
 
 			// convert Object to JSONObject
 			JSONObject jsonObject = (JSONObject) object;
@@ -51,7 +51,7 @@ public class JSON_Reader {
 	}
 	
 	@SuppressWarnings({ "unchecked" })
-	private static Map<String, Object> getSchemaDetails(String schemaName) {
+	public Map<String, Object> getSchemaDetails(String schemaName) {
 		if(!dmSchemas.isEmpty() && dmSchemas.get(schemaName) != null) {
 			return (Map<String, Object>) dmSchemas.get(schemaName);
 		}
@@ -63,6 +63,6 @@ public class JSON_Reader {
 	 * @param args
 	 */
 	public static void main(String args[]) {
-		System.out.println(getSchemaDetails("dm_emeapilot"));
+//		System.out.println(getSchemaDetails("dm_emeapilot"));
 	}
 }

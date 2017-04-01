@@ -17,7 +17,7 @@
 					</div>
 				 </c:if>
 				<form method="post" action="login">
-					<h1>Image Here</h1>
+					<h1>Device Manager</h1>
 					<div class="form-group ">
 						<div class="inner-addon left-addon">
 							<i class="glyphicon glyphicon-user"></i>

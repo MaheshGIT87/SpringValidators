@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Collection;
+import java.util.Map;
 
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.RowSetDynaClass;
 
 import com.primasolv.devicedata.util.DeviceManagerUtil;
+import com.primasolv.devicedata.util.JSONReader;
 import com.primasolv.devicedata.util.PropertiesReader;
 
 /**
@@ -42,6 +44,29 @@ public class JdbcConnectionManager {
                     pr.getPropertyValue("database.password"));
         } catch (Exception e) {
             System.out.println("Unable to establish connection to mysql: " + e);
+        }
+        return conn;
+    }
+    
+    /**
+     * Set connection
+     * @param schema
+     * @return
+     */
+    public Connection setNewConnection(String schema) {
+    	JSONReader jsonReader = new JSONReader();
+        if(jsonReader.getSchemaDetails(schema) != null) {
+        	Map<String, Object> schemaDetails = jsonReader.getSchemaDetails(schema);
+//        	System.out.println(schemaDetails);
+	        try {
+	            Class.forName("com.mysql.jdbc.Driver").newInstance();
+	            this.conn = DriverManager.getConnection(
+	            		(String)schemaDetails.get("url")+(String)schemaDetails.get("schema"),
+	            		(String)schemaDetails.get("user"),
+	            		(String)schemaDetails.get("password"));
+	        } catch (Exception e) {
+	            System.out.println("Unable to establish connection to mysql: " + e);
+	        }
         }
         return conn;
     }
