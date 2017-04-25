@@ -142,7 +142,8 @@ function performAJAX(requestUrl, requestMethod, postData, formId, callbackFn,
 		url : requestUrl,
 		data : postData,
 		type : requestMethod,
-		contentType : myContentType,
+		datatype:'json',
+		contentType : "application/json",
 		beforeSend  : function(jqXHR, settings ) {
 			if(isIdExists("#dyna_loadingMsg")) {
 				$("#dyna_loadingMsg").toggle();

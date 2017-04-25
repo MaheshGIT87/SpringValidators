@@ -8,30 +8,21 @@
 			<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">
-				Device Manager
+				Fedility Aws
 			</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li>
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-						DM (<strong><span id="dyna_selectedDmDisplayName"><c:out value='${selectedDmDisplayName}'/></span></strong>)
-						<span class="caret"></span>
+						Home
 					</a>
-					<ul id="dyna_selDeviceManager" class="dropdown-menu">
-						<c:forEach items="${deviceManagerList}" var="deviceManager">
-					        <li value="${deviceManager.dbSchema}"><a href="#" title="${deviceManager.dbSchema}">${deviceManager.dmName}</a></li>
-					    </c:forEach>
-					</ul>
 				</li>
 				<li>
-					<a href="./assetSearch.jsp">Assets</a>
+					<a href="./assignGroup.jsp">Assign Group</a>
 				</li>
 				<li>
-					<a href="./dealerSearch.jsp">Dealer</a>
-				</li>
-				<li>
-					<a href="./fieldUserSearch.jsp">Field User</a>
+					<a href="./download.jsp">Download</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
